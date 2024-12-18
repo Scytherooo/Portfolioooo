@@ -3,310 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link rel="stylesheet" href="styles.css"> 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="your-javascript-file.js"></script>
-    <title>Portfolio</title>
+    <title>Loading</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            background-color: #1a1a1a;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; 
+        }
+
+        .container {
+            margin: 30px;
+            position: absolute; 
+            opacity: 0;
+            animation: slideIn 1s forwards, fadeIn 3s forwards;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .container:nth-child(1) { width: 300px; height: 300px; }
+        .container:nth-child(2) { width: 350px; height: 450px; }
+        .container:nth-child(3) { width: 400px; height: 300px; }
+        .container:nth-child(4) { width: 450px; height: 500px; }
+        .container:nth-child(5) { width: 500px; height: 450px; }
+        .container:nth-child(6) { width: 400px; height: 400px; }
+        .container:nth-child(7) { width: 350px; height: 350px; }
+        .container:nth-child(8) { width: 420px; height: 380px; }
+        .container:nth-child(9) { width: 450px; height: 380px; }
+        .container:nth-child(10) { width: 500px; height: 500px; }
+        .container:nth-child(11) { width: 480px; height: 420px; }
+
+        .container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-50px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .container:nth-child(1) {
+            animation-delay: 0.5s;
+            top: 10%;
+            left: 5%;
+        }
+
+        .container:nth-child(2) {
+            animation-delay: 1s;
+            top: 30%;
+            left: 20%;
+        }
+
+        .container:nth-child(3) {
+            animation-delay: 1.5s;
+            top: 50%;
+            left: 15%;
+        }
+
+        .container:nth-child(4) {
+            animation-delay: 2s;
+            top: 70%;
+            left: 30%;
+        }
+
+        .container:nth-child(5) {
+            animation-delay: 2.5s;
+            top: 10%;
+            left: 70%;
+        }
+
+        .container:nth-child(6) {
+            animation-delay: 3s;
+            top: 80%;
+            left: 50%;
+        }
+
+        .container:nth-child(7) {
+            animation-delay: 3.5s;
+            top: 40%;
+            left: 70%;
+        }
+
+        .container:nth-child(8) {
+            animation-delay: 4s;
+            top: 60%;
+            left: 10%;
+        }
+
+        .container:nth-child(9) {
+            animation-delay: 4.5s;
+            top: 20%;
+            left: 40%;
+        }
+
+        .container:nth-child(10) {
+            animation-delay: 5s;
+            top: 80%;
+            left: 20%;
+        }
+
+        .container:nth-child(11) {
+            animation-delay: 5.5s;
+            top: 15%;
+            left: 50%;
+        }
+
+        .loading-container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        .loading-text {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .spinner {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #ff3737;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+    </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
-                Shawn <span>Ashley</span>
-            </div>
-            <div class="links">
-                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a href="#home">Home</a></div>
-                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"><a href="#about">About</a></div>
-                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><a href="#skills">Skills</a></div>
-                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400"><a href="#showcase">Showcase</a></div>
-                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500"><a href="#contact">Contact</a></div>
-            </div>
-            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
-        </div>
-        <div class="dropdown">
-            <div class="links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#showcase">Showcase</a>
-                <a href="#contact">Contact</a>
-                <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
-            </div>
-        </div>
-    </nav>
-    <section id="home">
-        <div class="main-container">
-            <div class="image" data-aos="zoom-out" data-aos-duration="3000">
-                <img src="images/dp.jpg" alt="Music Icon">
-            </div>
-            <div class="content">
-                <h1 data-aos="fade-left" data-aos-duration="1500" data-aos-delay="700">Hey I'm <span>Shawn</span></h1>
-                <div class="typewriter" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="900">I'm a <span class="typewriter-text"></span><label for="">|</label></div>
-                <p data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1100">Shawn Ashley S. De Guzman, 4th year student in Don Honorio Ventura State University. Currently studying Bachelor of Science in Computer Engineering. This portfolio will serves as a proof of my college life in DHVSU. Feel free to message me or visit my social media accounts.</p>
-                <div class="social-links">
-                    <a href="https://github.com/Scytherooo" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1300"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://www.facebook.com/Scytherooo" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1400"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://www.linkedin.com/in/shawn-ashley-de-guzman-113213342/" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1500"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://x.com/azli_xian?t=gGv9FRl-SsgPy4QNzKOixA&s=09" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1600"><i class="fa-brands fa-twitter"></i></a>
-                </div>
-                <div class="btn" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="1800">
-                    <button onclick="location.href='#contact'">Hire me</button>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="about">
-        <div class="about-container">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        Hi, I'm <span class="highlight">Shawn</span>, a passionate <span class="highlight">Computer Engineer</span> 
-                        with a love for building clean, efficient, and user-friendly applications.
-                    </p>
-                    <p>
-                        I specialize in <span class="highlight">web development, game development,</span> and have experience working with 
-                        technologies like <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript</strong>, and frameworks such as 
-                        <strong>Python</strong> and <strong>Node.js</strong>. I take pride in solving complex problems and creating 
-                        seamless user experiences.
-                    </p>
-                    <p>
-                        When I’m not coding, you can find me exploring the latest tech trends, watching random videos of a developer, 
-                        or working on open-source projects.
-                    </p>
-                    
-                    <!-- Download Buttons -->
-                    <div class="download-buttons">
-                        <a href="files/resume.pdf" download="Shawn_Resume.pdf">
-                            <button class="download-btn">Download Resume</button>
-                        </a>
-                        <a href="files/cv.pdf" download="Shawn_CV.pdf">
-                            <button class="download-btn">Download CV</button>
-                        </a>
-                    </div>
-    
-                    <!-- Rotating Certificates (Moving Effect) -->
-                    <div class="certificate-container">
-                        <div class="certificate-row left">
-                            <div class="moving-certificates left">
-                                <img src="images/certs/1.jpg" alt="Certificate 1" class="certificate">
-                                <img src="images/certs/2.jpg" alt="Certificate 2" class="certificate">
-                                <img src="images/certs/3.jpg" alt="Certificate 3" class="certificate">
-                                <img src="images/certs/4.jpg" alt="Certificate 4" class="certificate">
-                                <img src="images/certs/5.jpg" alt="Certificate 5" class="certificate">
-                                <img src="images/certs/6.jpg" alt="Certificate 6" class="certificate">
-                                <img src="images/certs/7.jpg" alt="Certificate 7" class="certificate">
-                                <img src="images/certs/8.jpg" alt="Certificate 8" class="certificate">
-                            </div>
-                        </div>
-                        <div class="certificate-row right">
-                            <div class="moving-certificates right">
-                                <img src="images/certs/9.jpg" alt="Certificate 9" class="certificate">
-                                <img src="images/certs/10.jfif" alt="Certificate 10" class="certificate">
-                                <img src="images/certs/11.jpg" alt="Certificate 11" class="certificate">
-                                <img src="images/certs/12.jfif" alt="Certificate 12" class="certificate">
-                                <img src="images/certs/13.jpg" alt="Certificate 13" class="certificate">
-                                <img src="images/certs/14.jfif" alt="Certificate 14" class="certificate">
-                                <img src="images/certs/15.jpg" alt="Certificate 15" class="certificate">
-                                <img src="images/certs/16.jfif" alt="Certificate 16" class="certificate">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="container-wrapper">
+        <div class="container">
+            <img src="images/loading/1.jpg" alt="Image 1">
         </div>
-    </section>
-    
-    <section id="skills">
-        <div class="skills-container">
-            <h2>My Skills</h2>
-            <p>Over the years, I have developed expertise in various technologies. Below is a quick overview of the tools and technologies I excel in:</p>
-            <div class="skill-category">
-                <h3>Frontend Development</h3>
-                <div class="skills-list">
-                    <div class="skill-item">
-                        <img src="images/html5.png" alt="HTML5">
-                        <p>HTML</p>
-                    </div>
-                    <div class="skill-item">
-                        <img src="images/css3.png" alt="CSS3">
-                        <p>CSS</p>
-                    </div>
-                    <div class="skill-item">
-                        <img src="images/flutter.png" alt="Flutter">
-                        <p>Flutter</p>
-                    </div>
-                    <div class="skill-item">
-                        <img src="images/py.png" alt="Phyton">
-                        <p>Python</p>
-                    </div>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h3>Backend Development</h3>
-                <div class="skills-list">
-                    <div class="skill-item">
-                        <img src="images/nodejs.png" alt="Node.js">
-                        <p>Node.js</p>
-                    </div>  
-                    <div class="skill-item">
-                        <img src="images/java.png" alt="Express.js">
-                        <p>Java</p>
-                    </div>
-                    <div class="skill-item">
-                        <img src="images/py.png" alt="Phyton">
-                        <p>Python</p>
-                    </div>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h3>Tools & Version Control</h3>
-                <div class="skills-list">
-                    <div class="skill-item">
-                        <img src="images/autodesk.png" alt="Autodesk">
-                        <p>Autodesk</p>
-                    </div>
-                    <div class="skill-item">
-                        <img src="images/github.png" alt="GitHub">
-                        <p>GitHub</p>
-                    </div>
-                    <div class="skill-item">
-                        <img src="images/figma.png" alt="Figma">
-                        <p>Figma</p>
-                    </div>
-                </div>
-            </div>
+        <div class="container">
+            <img src="images/loading/2.png" alt="Image 2">
         </div>
-    </section>
-    
+        <div class="container">
+            <img src="images/loading/3.jfif" alt="Image 3">
+        </div>
+        <div class="container">
+            <img src="images/loading/4.png" alt="Image 4">
+        </div>
+        <div class="container">
+            <img src="images/loading/5.jfif" alt="Image 5">
+        </div>
+        <div class="container">
+            <img src="images/loading/6.jfif" alt="Image 6">
+        </div>
+        <div class="container">
+            <img src="images/loading/7.jfif" alt="Image 7">
+        </div>
+        <div class="container">
+            <img src="images/loading/8.jfif" alt="Image 8">
+        </div>
+        <div class="container">
+            <img src="images/loading/9.jfif" alt="Image 9">
+        </div>
+        <div class="container">
+            <img src="images/loading/10.jfif" alt="Image 10">
+        </div>
+        <div class="container">
+            <img src="images/loading/11.jpg" alt="Image 11">
+        </div>
+    </div>
 
-    <section id="showcase">
-        <div class="showcase-header">
-            <h2 class="section-title">Showcase</h2>
-            <div class="showcase-buttons">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="hardware">Hardware</button>
-                <button class="filter-btn" data-filter="software">Software</button>
-            </div>
-        </div>
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide" data-category="hardware">
-                    <img src="psu.jpg" alt="Hardware Project 1" />
-                    <div class="overlay">Power Supply</div>
-                </div>
-                <div class="swiper-slide" data-category="software">
-                    <img src="1.png" alt="Software Project 1" />
-                    <div class="overlay">SRUVA</div>
-                </div>
-                <div class="swiper-slide" data-category="hardware">
-                    <img src="3bitflash.jpg" alt="Hardware Project 2" />
-                    <div class="overlay">3 Bit Flash ADC</div>
-                </div>
-                <div class="swiper-slide" data-category="software">
-                    <img src="todolistapp.png" alt="Software Project 2" />
-                    <div class="overlay">To Do List App</div>
-                </div>
-                <div class="swiper-slide" data-category="hardware">
-                    <img src="sluicegate.jpg" alt="Hardware Project 3" />
-                    <div class="overlay">Arduino Uno Fishpond Sluice Gate System</div>
-                </div>
-                <div class="swiper-slide" data-category="software">
-                    <img src="calcu.png" alt="Software Project 3" />
-                    <div class="overlay">Calculator App</div>
-                </div>
-                <div class="swiper-slide" data-category="hardware">
-                    <img src="bp.jpg" alt="Hardware Project 4" />
-                    <div class="overlay">Arduino Uno Patient Body Temp and Blood Pressure Monitoring (Wearable Device)</div>
-                </div>
-                <div class="swiper-slide" data-category="software">
-                    <img src="whackawally.jpg" alt="Software Project 4" />
-                    <div class="overlay">Whack A Wally Game App</div>
-                </div>
-                <div class="swiper-slide" data-category="hardware">
-                    <img src="linefollower.jpg" alt="Hardware Project 5" />
-                    <div class="overlay">Line Follower</div>
-                </div>
-                <div class="swiper-slide" data-category="software">
-                    <img src="dailydripp.png" alt="Software Project 5" />
-                    <div class="overlay">Daily Dripp Web Page</div>
-                </div>
-                <div class="swiper-slide" data-category="software">
-                    <img src="javaquiz.png" alt="Software Project 6" />
-                    <div class="overlay">Java Quiz App</div>
-                </div>
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-    </section>
-     
-    <section id="contact">
-        <div class="content" data-aos="fade-up" data-aos-duration="1500">
-            <h2>Contact Me</h2>
-            <p>Feel free to reach out to me for projects, collaborations, or just to say hello. I'm always open to new opportunities.</p>
-            
-            <div class="contact-form">
-                <form action="#" class="form">
-                    <div class="input-group">
-                        <div class="input-field">
-                            <i class="fa-solid fa-user"></i>
-                            <input type="text" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="input-field">
-                            <i class="fa-solid fa-envelope"></i>
-                            <input type="email" name="email" placeholder="Your Email" required>
-                        </div>
-                    </div>
-                    <div class="input-field">
-                        <i class="fa-solid fa-message"></i>
-                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-                    <div class="submit-btn">
-                        <button type="submit">Send Message</button>
-                    </div>
-                </form>
-            </div>
-    
-            <div class="contact-info">
-                <div class="info-item">
-                    <i class="fa-solid fa-phone"></i>
-                    <p>+63 999 554 8260</p>
-                </div>
-                <div class="info-item">
-                    <i class="fa-solid fa-map-marker-alt"></i>
-                    <p>San Nicolas 2nd Betis Guagua, Pampanga</p>
-                </div>
-                <div class="info-item">
-                    <i class="fa-solid fa-envelope"></i>
-                    <p>deguzmanshawnashley@gmail.com</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <footer>
-        <div class="footer-container">
-            <p>&copy; 2024 Shawn Ashley. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://github.com/Scytherooo" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.facebook.com/Scytherooo" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                <a href="https://www.linkedin.com/in/shawn-ashley-de-guzman-113213342/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://x.com/azli_xian?t=gGv9FRl-SsgPy4QNzKOixA&s=09" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
-            </div>
-        </div>
-    </footer>
+    <div class="loading-container">
+        <div class="loading-text">Please Wait, Loading...</div>
+        <div class="spinner"></div>
+    </div>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    
     <script>
-        AOS.init({ offset: 0 });
+        setTimeout(function() {
+            window.location.href = "index.html"; 
+        }, 5000);
     </script>
-    <script src="script.js"></script>
+
 </body>
 </html>
